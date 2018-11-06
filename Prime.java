@@ -16,8 +16,9 @@ public class Prime {
 			else for (int zbytek = cislo%delitel; cislo >= delitel; delitel++) {
 				if ((cislo > delitel) && (zbytek == 0)) {
 					System.out.printf("%d neni prvocislo.\n", cislo);
+					break;
 					}
-				else if ((cislo == delitel) && (zbytek != 0)){
+				else if (cislo == delitel){
 					System.out.printf("%d je prvocislo!\n", cislo);
 					}
 			}
