@@ -7,6 +7,12 @@ public class Prumer {
             suma += sc.nextDouble();
             pocet++;
         }
-        System.out.printf("Prumer je %2.2f.\n", suma / pocet);
+        if (pocet > 0) {
+          System.out.printf("Prumer je %2.2f.\n", suma / pocet);
+        }
+        else {
+          System.err.println("Nebylo zadano zadne cislo.");
+        }
+
     }
 }
