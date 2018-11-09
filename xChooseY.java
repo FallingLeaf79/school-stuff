@@ -1,6 +1,6 @@
 public class xChooseY {
-  public static int factorial(int x) {
-    int out = 1;
+  public static long factorial(long x) {
+    long out = 1L;
     while (x > 0) {
       out = out*x;
       x--;
@@ -9,10 +9,10 @@ public class xChooseY {
   }
 
   public static void main (String[] args) {
-    int x = Integer.parseInt(args[0]);
-    int y = Integer.parseInt(args[1]);
+    long x = Long.parseLong(args[0]);
+    long y = Long.parseLong(args[1]);
     if (x >= y && x >= 0 && y >= 0) {
-      int result = (factorial(x) / (factorial(y)*factorial(x-y)));
+      long result = (factorial(x) / (factorial(y)*factorial(x-y)));
       System.out.println(result);
     }
     else {
