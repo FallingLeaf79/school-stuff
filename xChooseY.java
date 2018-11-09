@@ -9,12 +9,12 @@ public class xChooseY {
   }*/
 
   public static void main (String[] args) {
-    int x = Integer.parseInt(args[0]);
-    int y = Integer.parseInt(args[1]);
+    long x = Long.parseLong(args[0]);
+    long y = Long.parseLong(args[1]);
     if (y > (x-y)) {
       y = x-y;
     } //(n*(n-1)*...(n-k+1))/(k*(k-1)*...*1)
-    int result = 1;
+    long result = 1L;
     for (int z = 0; z < y; z++) {
       result *= (x-z);
       result /= (y-z);
