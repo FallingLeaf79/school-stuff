@@ -9,13 +9,38 @@ public class ZippyBoi {
 
     public static void main(String[] args) throws IOException {
         boolean printList = false;
+        boolean printMeta = false;
+        boolean extract = false;
+        boolean isTargetDir = false;
+        boolean makeSubDir = false;
+
         String zipName = null;
+        String targetDir = null;
 
         for (String arg : args) {
-            if (arg.equals("-t")) {
-                printList = true;
+            if (isTargetDir) {
+                targetDir = arg;
+                isTargetDir = false;
             } else {
-                zipName = arg;
+                switch (arg) {
+                    case "-t":
+                        printList = true;
+                        break;
+                    case "-l":
+                        printMeta = true;
+                        break;
+                    case "-x":
+                        extract = true;
+                        break;
+                    case "-d":
+                        isTargetDir = true;
+                        break;
+                    case "-D":
+                        makeSubDir = true;
+                        break;
+                    default:
+                        zipName = arg;
+                }
             }
         }
 
