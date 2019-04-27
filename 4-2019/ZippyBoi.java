@@ -48,19 +48,35 @@ public class ZippyBoi {
             return;
         }
 
-        if (printList) {
-            ZipFile file = new ZipFile(zipName);
-            Enumeration<? extends ZipEntry> files = file.entries();
-            List<String> names = new ArrayList<String>();
+        ZipFile file = new ZipFile(zipName);
+        Enumeration<? extends ZipEntry> files = file.entries();
+        List<ZipEntry> entries = new ArrayList<ZipEntry>();
 
-            while (files.hasMoreElements()) {
-                ZipEntry entry = files.nextElement();
-                names.add(entry.getName());
+        while (files.hasMoreElements()) {
+            entries.add(files.nextElement());
+        }
+
+        if (printList) {
+
+            if (printMeta) {
+                System.out.printf(
+                "%-50s %-31s %s\n",
+                "File name",
+                "Last modified",
+                "Uncompressed size (in bytes)"
+                );
             }
 
-            Collections.sort(names);
-            for (String name : names) {
-                System.out.println(name);
+            for (ZipEntry entry : entries) {
+                String out = printMeta ?
+                    String.format(
+                        "%-50s %tc   %s",
+                        entry.getName(),
+                        entry.getTime(),
+                        entry.getSize()
+                    ) :
+                    entry.getName();
+                System.out.println(out);
             }
             file.close();
         }
